@@ -35,17 +35,17 @@ int main()
 	fclose(fptr);
 
 	srand(time(NULL));
-	for(i=0;i<count;i++)//初始 
+	for(i=0;i<count;i++)//initial
 	{
 		chose = rand()%51;
-		while(read[chose][0] == -9999)//取到重複 
+		while(read[chose][0] == -9999)//sample chose
 			chose = rand()%51;
 		startData[i][0] = read[chose][0];
 		startData[i][1] = read[chose][1];
 		startData[i][2] = read[chose][2];
 		read[chose][0] = -9999;
 	}
-	bestDistance = countDistance(startData,count);//初始的距離 
+	bestDistance = countDistance(startData,count);//startDistance
 	
 	while((co != 500001)&&(bestDistance!=426))
 	{
@@ -53,19 +53,19 @@ int main()
 		double changeDistance;
 		change1 = rand()%51;
 		change2 = rand()%51;
-		while(change1 == change2)//取到兩個相同 
+		while(change1 == change2)//sample change
 			change1 = rand()%51;
-		for(i=0;i<bestStepCount;i++)//取到在 bestStepList 一組數子 
+		for(i=0;i<bestStepCount;i++)//take a group in bestStepList
 		{						
 			if(bestStepList[i] == change1)
 			{				
-				if((i%2) == 0)//左邊 
+				if((i%2) == 0)//the number in left
 				{									
 					temp = (i+1);
 					if(bestStepList[temp] == change2)
 						change1 = rand()%51;
 				}
-				else//右邊 
+				else//the number in right
 				{						
 					temp = (i-1);
 					if(bestStepList[temp] == change2)
@@ -124,7 +124,7 @@ void tempData(int array[51][3],int randon1,int randon2)
 
 int store(int bestStepList[1000],int bestStepCount,int userStoreStepCount,int a,int b)
 {
-	if(bestStepCount == (userStoreStepCount*2))//bestStepList滿了 
+	if(bestStepCount == (userStoreStepCount*2))//bestStepList Full
 	{		
 		int countTwo=2,s;
 		for(s=0;s<(userStoreStepCount*2-2);s++)
@@ -133,8 +133,8 @@ int store(int bestStepList[1000],int bestStepCount,int userStoreStepCount,int a,
 			countTwo++;
 		}
 		bestStepCount = bestStepCount - 2;
-		bestStepList[bestStepCount] = 99999;//空的所以設為99999 
-		bestStepList[++bestStepCount] = 99999;//空的所以設為99999
+		bestStepList[bestStepCount] = 99999;//empty = 99999
+		bestStepList[++bestStepCount] = 99999;////empty = 99999
 		bestStepCount--;
 	}
 	else
