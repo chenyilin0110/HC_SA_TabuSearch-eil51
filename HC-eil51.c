@@ -70,7 +70,7 @@ int main()
 		co++;
 	}					
 	endclock = clock();
-//	printf("%1f\n",(endclock-startclock)/(double)(CLOCKS_PER_SEC));//total time	
+	printf("%1f\n",(endclock-startclock)/(double)(CLOCKS_PER_SEC));//total time	
 }
 
 void tempData(int array[51][3],int randon1,int randon2)
